@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "QuW-xW-f9t"; */
+"QuW-xW-f9t.text" = "Detail";
+
+/* Class = "UILabel"; text = "1 JPY = ? NTD"; ObjectID = "azR-MC-FZo"; */
+"azR-MC-FZo.text" = "1 日幣 = ? 台幣";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "mCu-VW-AQs"; */
+"mCu-VW-AQs.text" = "Title";
+
+/* Class = "UIButton"; normalTitle = "Refresh"; ObjectID = "sSJ-DW-bnN"; */
+"sSJ-DW-bnN.normalTitle" = "重新整理";

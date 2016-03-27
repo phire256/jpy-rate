@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07D526001CA02EDD000B74DF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07D525FE1CA02EDD000B74DF /* InfoPlist.strings */; };
+		07D526041CA032F6000B74DF /* 180x180.png in Resources */ = {isa = PBXBuildFile; fileRef = 07D526031CA032F6000B74DF /* 180x180.png */; };
 		07D5B8F31A54CABD00EB6334 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D5B8F21A54CABD00EB6334 /* AppDelegate.swift */; };
 		07D5B8F61A54CABD00EB6334 /* JPY_Rate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 07D5B8F41A54CABD00EB6334 /* JPY_Rate.xcdatamodeld */; };
 		07D5B8F81A54CABD00EB6334 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D5B8F71A54CABD00EB6334 /* ViewController.swift */; };
@@ -30,6 +32,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		07D525FD1CA02E38000B74DF /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
+		07D525FF1CA02EDD000B74DF /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		07D526031CA032F6000B74DF /* 180x180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 180x180.png; path = Images.xcassets/AppIcon.appiconset/180x180.png; sourceTree = "<group>"; };
 		07D5B8ED1A54CABD00EB6334 /* JPY Rate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JPY Rate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		07D5B8F11A54CABD00EB6334 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		07D5B8F21A54CABD00EB6334 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +99,7 @@
 				07D5B8FC1A54CABD00EB6334 /* Images.xcassets */,
 				07D5B8FE1A54CABD00EB6334 /* LaunchScreen.xib */,
 				07D5B8F41A54CABD00EB6334 /* JPY_Rate.xcdatamodeld */,
+				07D526031CA032F6000B74DF /* 180x180.png */,
 				07D5B8F01A54CABD00EB6334 /* Supporting Files */,
 			);
 			path = "JPY Rate";
@@ -103,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				07D5B8F11A54CABD00EB6334 /* Info.plist */,
+				07D525FE1CA02EDD000B74DF /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -190,6 +197,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hant",
 			);
 			mainGroup = 07D5B8E41A54CABD00EB6334;
 			productRefGroup = 07D5B8EE1A54CABD00EB6334 /* Products */;
@@ -207,6 +215,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07D526001CA02EDD000B74DF /* InfoPlist.strings in Resources */,
+				07D526041CA032F6000B74DF /* 180x180.png in Resources */,
 				07D5B8FB1A54CABD00EB6334 /* Main.storyboard in Resources */,
 				07D5B9001A54CABD00EB6334 /* LaunchScreen.xib in Resources */,
 				07D5B8FD1A54CABD00EB6334 /* Images.xcassets in Resources */,
@@ -255,10 +265,19 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		07D525FE1CA02EDD000B74DF /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				07D525FF1CA02EDD000B74DF /* zh-Hant */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		07D5B8F91A54CABD00EB6334 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				07D5B8FA1A54CABD00EB6334 /* Base */,
+				07D525FD1CA02E38000B74DF /* zh-Hant */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
