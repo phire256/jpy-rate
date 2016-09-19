@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="uIG-35-4di">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="uIG-35-4di">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Table View Controller-->
@@ -10,43 +11,74 @@
             <objects>
                 <tableViewController id="uIG-35-4di" customClass="TableViewController" customModule="JPY_Rate" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="rgN-kO-bzp">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="eC3-X9-jSJ">
-                            <rect key="frame" x="0.0" y="66" width="600" height="300"/>
+                            <rect key="frame" x="0.0" y="66" width="375" height="400"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SJ5-o3-3GX">
-                                    <rect key="frame" x="0.0" y="79" width="600" height="162"/>
-                                </pickerView>
-                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sSJ-DW-bnN">
-                                    <rect key="frame" x="274" y="249" width="53" height="30"/>
+                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SJ5-o3-3GX"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sSJ-DW-bnN">
                                     <state key="normal" title="Refresh">
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                     <connections>
                                         <action selector="onRefreshButtonClicked:" destination="uIG-35-4di" eventType="touchUpInside" id="JVU-Cb-f3I"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1 JPY = ? NTD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azR-MC-FZo">
-                                    <rect key="frame" x="243" y="50" width="114" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 JPY = ? NTD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azR-MC-FZo">
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification: OFF" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ONv-UL-G8o">
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="116" id="a4a-Lr-xR5"/>
+                                        <constraint firstAttribute="height" constant="18" id="jOs-2c-f9d"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e2g-K8-ns5">
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="130" id="M3j-8V-Mac"/>
+                                        <constraint firstAttribute="height" constant="30" id="Nge-dX-Hqj"/>
+                                    </constraints>
+                                    <state key="normal" title="Notification Toggle"/>
+                                    <connections>
+                                        <action selector="onNotificationToggleClicked:" destination="uIG-35-4di" eventType="touchUpInside" id="kER-uz-AIr"/>
+                                    </connections>
+                                </button>
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification: ON" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RjW-Lh-mAF" userLabel="Notification: ON">
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="18" id="LTB-RN-duF"/>
+                                        <constraint firstAttribute="width" constant="115.5" id="RjD-vy-Nm5"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstItem="sSJ-DW-bnN" firstAttribute="top" secondItem="SJ5-o3-3GX" secondAttribute="bottom" constant="8" symbolic="YES" id="7H4-B4-JHo"/>
+                                <constraint firstAttribute="trailing" secondItem="RjW-Lh-mAF" secondAttribute="trailing" constant="8" id="2In-pI-caj"/>
+                                <constraint firstItem="RjW-Lh-mAF" firstAttribute="top" secondItem="eC3-X9-jSJ" secondAttribute="top" constant="20" id="2tJ-Ch-4Ox"/>
+                                <constraint firstItem="sSJ-DW-bnN" firstAttribute="top" secondItem="SJ5-o3-3GX" secondAttribute="bottom" constant="26" id="7H4-B4-JHo"/>
+                                <constraint firstAttribute="bottom" secondItem="e2g-K8-ns5" secondAttribute="bottom" constant="8" id="BYD-Hy-IWB"/>
                                 <constraint firstAttribute="centerX" secondItem="azR-MC-FZo" secondAttribute="centerX" id="CWh-TN-1Je"/>
-                                <constraint firstItem="azR-MC-FZo" firstAttribute="top" secondItem="eC3-X9-jSJ" secondAttribute="top" constant="50" id="bGV-eK-ksP"/>
+                                <constraint firstItem="e2g-K8-ns5" firstAttribute="centerX" secondItem="eC3-X9-jSJ" secondAttribute="centerX" constant="92.5" id="HDb-0W-gM1"/>
+                                <constraint firstItem="ONv-UL-G8o" firstAttribute="top" secondItem="eC3-X9-jSJ" secondAttribute="top" constant="20" id="KoI-8u-Mi6"/>
+                                <constraint firstItem="azR-MC-FZo" firstAttribute="top" secondItem="eC3-X9-jSJ" secondAttribute="top" constant="68" id="bGV-eK-ksP"/>
                                 <constraint firstAttribute="trailing" secondItem="SJ5-o3-3GX" secondAttribute="trailing" id="fD5-Jh-wkp"/>
                                 <constraint firstItem="SJ5-o3-3GX" firstAttribute="top" secondItem="eC3-X9-jSJ" secondAttribute="top" id="k6E-vA-lkv"/>
-                                <constraint firstAttribute="centerX" secondItem="sSJ-DW-bnN" secondAttribute="centerX" id="mAF-dn-i8B"/>
+                                <constraint firstAttribute="trailing" secondItem="sSJ-DW-bnN" secondAttribute="trailing" constant="195" id="lkC-Qu-78m"/>
+                                <constraint firstAttribute="centerX" secondItem="sSJ-DW-bnN" secondAttribute="centerX" constant="72.5" id="mAF-dn-i8B"/>
                                 <constraint firstItem="azR-MC-FZo" firstAttribute="leading" secondItem="eC3-X9-jSJ" secondAttribute="leading" constant="243" id="qbs-Uh-xPN"/>
                                 <constraint firstItem="SJ5-o3-3GX" firstAttribute="leading" secondItem="eC3-X9-jSJ" secondAttribute="leading" id="vgX-YM-w5u"/>
-                                <constraint firstItem="SJ5-o3-3GX" firstAttribute="top" secondItem="azR-MC-FZo" secondAttribute="bottom" constant="8" id="vgc-AP-3Td"/>
+                                <constraint firstItem="SJ5-o3-3GX" firstAttribute="top" secondItem="azR-MC-FZo" secondAttribute="bottom" constant="28" id="vgc-AP-3Td"/>
+                                <constraint firstAttribute="trailing" secondItem="ONv-UL-G8o" secondAttribute="trailing" constant="8" id="wbX-9U-uw1"/>
                             </constraints>
                             <variation key="default">
                                 <mask key="constraints">
@@ -56,25 +88,25 @@
                             </variation>
                         </view>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="configCell" textLabel="mCu-VW-AQs" detailTextLabel="QuW-xW-f9t" style="IBUITableViewCellStyleValue1" id="pQI-ft-gSQ">
-                                <rect key="frame" x="0.0" y="22" width="600" height="44"/>
+                            <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="configCell" textLabel="mCu-VW-AQs" detailTextLabel="QuW-xW-f9t" style="IBUITableViewCellStyleValue1" id="pQI-ft-gSQ">
+                                <rect key="frame" x="0.0" y="22" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pQI-ft-gSQ" id="2J5-ad-skp">
-                                    <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
+                                    <frame key="frameInset" width="342" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mCu-VW-AQs">
-                                            <rect key="frame" x="15" y="12" width="32" height="20"/>
+                                            <frame key="frameInset" minX="15" minY="12" width="32" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QuW-xW-f9t">
-                                            <rect key="frame" x="523" y="12" width="42" height="20"/>
+                                            <frame key="frameInset" minX="298" minY="12" width="42" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -87,12 +119,15 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="notificationText" destination="ONv-UL-G8o" id="UQX-cp-SpX"/>
+                        <outlet property="notificationTextOn" destination="RjW-Lh-mAF" id="WBk-xR-XQi"/>
                         <outlet property="pickerView" destination="SJ5-o3-3GX" id="2L7-Tq-N2M"/>
+                        <outlet property="rootView" destination="eC3-X9-jSJ" id="anw-hy-HJ8"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LKj-SS-aUX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="927" y="138"/>
+            <point key="canvasLocation" x="925.60000000000002" y="137.18140929535232"/>
         </scene>
     </scenes>
 </document>

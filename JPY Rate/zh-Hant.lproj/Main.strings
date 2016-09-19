@@ -1,4 +1,15 @@
 
+/* Class = "UILabel"; text = "Notification: ON"; ObjectID = "RjW-Lh-mAF"; */
+"RjW-Lh-mAF.text" = "通知:開啓";
+
+
+
+/* Class = "UILabel"; text = "Notification: OFF"; ObjectID = "ONv-UL-G8o"; */
+"ONv-UL-G8o.text" = "通知:關閉";
+
+/* Class = "UIButton"; normalTitle = "Notification Toggle"; ObjectID = "e2g-K8-ns5"; */
+"e2g-K8-ns5.normalTitle" = "切換通知";
+
 /* Class = "UILabel"; text = "Detail"; ObjectID = "QuW-xW-f9t"; */
 "QuW-xW-f9t.text" = "Detail";
 

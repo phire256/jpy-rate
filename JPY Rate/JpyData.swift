@@ -11,50 +11,50 @@ import Foundation
 class JpyData: NSObject, NSURLConnectionDataDelegate{
     
     // MARK:- store keys
-    private let frontKey = "front"
-    private let rearKey = "rear"
-    private let queueSizeKey = "maxqueue"
-    private let timeKey = "time"
-    private let rateKey = "rate"
-    private let showSizeKey = "showsize"
+    fileprivate let frontKey = "front"
+    fileprivate let rearKey = "rear"
+    fileprivate let queueSizeKey = "maxqueue"
+    fileprivate let timeKey = "time"
+    fileprivate let rateKey = "rate"
+    fileprivate let showSizeKey = "showsize"
     
-    private let userDefault = NSUserDefaults.standardUserDefaults()
-    private var data: NSMutableData? = nil
+    fileprivate let userDefault = UserDefaults.standard
+    fileprivate var data: NSMutableData? = nil
     
-    private var connectionHandler: ((Bool) -> Void)? = nil
+    fileprivate var connectionHandler: ((Bool) -> Void)? = nil
     
     // MARK:- private functions
     // TODO: make resetDatabase() private!
     func resetDatabase() {
-        userDefault.setInteger(0, forKey: frontKey)
-        userDefault.setInteger(0, forKey: rearKey)
-        userDefault.setInteger(101, forKey: queueSizeKey)
-        userDefault.setInteger(5, forKey: showSizeKey)
+        userDefault.set(0, forKey: frontKey)
+        userDefault.set(0, forKey: rearKey)
+        userDefault.set(101, forKey: queueSizeKey)
+        userDefault.set(5, forKey: showSizeKey)
     }
     
     // NOTE: front & rear should be initialized with queueSize.
-    private func tryGetQueueSize() -> NSInteger {
-        let queueSize = userDefault.integerForKey(queueSizeKey)
+    fileprivate func tryGetQueueSize() -> NSInteger {
+        let queueSize = userDefault.integer(forKey: queueSizeKey)
         if (queueSize == 0) {
             resetDatabase()
-            return userDefault.integerForKey(queueSizeKey)
+            return userDefault.integer(forKey: queueSizeKey)
         }
         return queueSize
     }
     
-    private func tryGetShowSize() -> NSInteger {
-        let showSize = userDefault.integerForKey(showSizeKey)
+    fileprivate func tryGetShowSize() -> NSInteger {
+        let showSize = userDefault.integer(forKey: showSizeKey)
         if showSize == 0 {
-            userDefault.setInteger(5, forKey: showSizeKey)
-            return userDefault.integerForKey(showSizeKey)
+            userDefault.set(5, forKey: showSizeKey)
+            return userDefault.integer(forKey: showSizeKey)
         }
         return showSize
     }
-    private func tryGetDataSize() -> NSInteger {
+    fileprivate func tryGetDataSize() -> NSInteger {
         // try init front & rear
         let queueSize = tryGetQueueSize()
-        let front = userDefault.integerForKey(frontKey)
-        let rear = userDefault.integerForKey(rearKey)
+        let front = userDefault.integer(forKey: frontKey)
+        let rear = userDefault.integer(forKey: rearKey)
         
         if front == rear {
             return 0
@@ -64,17 +64,17 @@ class JpyData: NSObject, NSURLConnectionDataDelegate{
             return rear - front
         }
     }
-    private func isDataAlreadyExists(time: Int) -> Bool {
+    fileprivate func isDataAlreadyExists(_ time: Int) -> Bool {
         let queueSize = tryGetQueueSize()
-        let front = userDefault.integerForKey(frontKey)
-        var rear = userDefault.integerForKey(rearKey)
+        let front = userDefault.integer(forKey: frontKey)
+        var rear = userDefault.integer(forKey: rearKey)
         // check empty
         if front != rear {
             if rear < front {
                 rear = rear + queueSize
             }
-            for var currentId = front; currentId < rear ; currentId++ {
-                let timeInteger = userDefault.integerForKey("\(timeKey)\(currentId)") as NSInteger
+            for currentId in front ..< rear {
+                let timeInteger = userDefault.integer(forKey: "\(timeKey)\(currentId)") as NSInteger
                 if time == timeInteger {
                     return true
                 }
@@ -82,31 +82,31 @@ class JpyData: NSObject, NSURLConnectionDataDelegate{
         }
         return false
     }
-    private func addRate(rate: Double, updateTime: Int) {
+    fileprivate func addRate(_ rate: Double, updateTime: Int) {
         let queueSize = tryGetQueueSize()
-        let front = userDefault.integerForKey(frontKey)
-        let rear = userDefault.integerForKey(rearKey)
+        let front = userDefault.integer(forKey: frontKey)
+        let rear = userDefault.integer(forKey: rearKey)
         // check full
         if front == (rear + 1) % queueSize {
             // delete the oldest item
-            userDefault.setInteger((front + 1) % queueSize, forKey: frontKey)
+            userDefault.set((front + 1) % queueSize, forKey: frontKey)
         }
         // add item
-        userDefault.setDouble(rate, forKey: "\(rateKey)\(rear)")
+        userDefault.set(rate, forKey: "\(rateKey)\(rear)")
         
-        userDefault.setInteger(updateTime, forKey: "\(timeKey)\(rear)")
+        userDefault.set(updateTime, forKey: "\(timeKey)\(rear)")
         
         // update rear
-        userDefault.setInteger((rear + 1) % queueSize, forKey: rearKey)
+        userDefault.set((rear + 1) % queueSize, forKey: rearKey)
     }
     
     // MARK:- connection data delegate
-    func connection(connection: NSURLConnection, didReceiveData data: NSData) {
-        self.data = data.mutableCopy() as? NSMutableData
+    func connection(_ connection: NSURLConnection, didReceive data: Data) {
+        self.data = (data as NSData).mutableCopy() as? NSMutableData
     }
-    func connectionDidFinishLoading(connection: NSURLConnection) {
+    func connectionDidFinishLoading(_ connection: NSURLConnection) {
         var hasItem = false
-        let jsonResult: NSDictionary = (try! NSJSONSerialization.JSONObjectWithData(self.data!, options: NSJSONReadingOptions.MutableContainers)) as! NSDictionary
+        let jsonResult: NSDictionary = (try! JSONSerialization.jsonObject(with: self.data! as Data, options: JSONSerialization.ReadingOptions.mutableContainers)) as! NSDictionary
         
         // add item
         if !isDataAlreadyExists(jsonResult["updateTime"] as! NSInteger) {
@@ -126,13 +126,13 @@ class JpyData: NSObject, NSURLConnectionDataDelegate{
     }
     
     // MARK:- public functions
-    func updateData(handler: ((Bool) -> Void)?) {
+    func updateData(_ handler: ((Bool) -> Void)?) {
         // handler
         self.connectionHandler = handler
         // connection
-        let urlPath = "http://jpyapi-1172.appspot.com/"
-        let url = NSURL(string: urlPath)
-        let request = NSURLRequest(URL: url!)
+        let urlPath = "http://2-dot-jpyapi-1172.appspot.com/"
+        let url = URL(string: urlPath)
+        let request = URLRequest(url: url!)
         let connection = NSURLConnection(request: request, delegate: self)
         connection!.start()
     }
@@ -142,7 +142,7 @@ class JpyData: NSObject, NSURLConnectionDataDelegate{
     func getDataSize() -> NSInteger {
         return min(tryGetShowSize(), tryGetDataSize())
     }
-    func getRateByIndex(index: NSInteger, isReverseOrder: Bool) -> Rate? {
+    func getRateByIndex(_ index: NSInteger, isReverseOrder: Bool) -> Rate? {
         if (index < 0) {
             return nil
         }
@@ -156,8 +156,8 @@ class JpyData: NSObject, NSURLConnectionDataDelegate{
         if (index >= dataSize) {
             return nil
         }
-        let front = userDefault.integerForKey(frontKey)
-        let rear = userDefault.integerForKey(rearKey)
+        let front = userDefault.integer(forKey: frontKey)
+        let rear = userDefault.integer(forKey: rearKey)
         
         // check empty
         if (front == rear) {
@@ -170,14 +170,14 @@ class JpyData: NSObject, NSURLConnectionDataDelegate{
                 currentId = (front + index) % queueSize
             }
 
-            let timeInteger = userDefault.integerForKey("\(timeKey)\(currentId)") as NSInteger
-            let rateDouble = userDefault.doubleForKey("\(rateKey)\(currentId)")
-            let rate = Rate(rate: rateDouble, time: NSDate(timeIntervalSince1970: NSTimeInterval(timeInteger)))
+            let timeInteger = userDefault.integer(forKey: "\(timeKey)\(currentId)") as NSInteger
+            let rateDouble = userDefault.double(forKey: "\(rateKey)\(currentId)")
+            let rate = Rate(rate: rateDouble, time: Date(timeIntervalSince1970: TimeInterval(timeInteger)))
             
             return rate
         }
     }
-    func getArray(numberOfItems:NSInteger) -> [Rate]? {
+    func getArray(_ numberOfItems:NSInteger) -> [Rate]? {
         if numberOfItems < 0 {
             return nil
         }
@@ -188,19 +188,19 @@ class JpyData: NSObject, NSURLConnectionDataDelegate{
         
         let queueSize = tryGetQueueSize()
         
-        let front = userDefault.integerForKey(frontKey)
-        var rear = userDefault.integerForKey(rearKey)
+        let front = userDefault.integer(forKey: frontKey)
+        var rear = userDefault.integer(forKey: rearKey)
         
         // check empty
         if front != rear {
             if rear < front {
                 rear = rear + min(queueSize, numberOfItems)
             }
-            for var i = front; i < rear; i++ {
+            for i in front ..< rear {
                 let currentId = i % queueSize
-                let timeInteger = userDefault.integerForKey("\(timeKey)\(currentId)") as NSInteger
-                let rateDouble = userDefault.doubleForKey("\(rateKey)\(currentId)")
-                let rate = Rate(rate: rateDouble, time: NSDate(timeIntervalSince1970: NSTimeInterval(timeInteger)))
+                let timeInteger = userDefault.integer(forKey: "\(timeKey)\(currentId)") as NSInteger
+                let rateDouble = userDefault.double(forKey: "\(rateKey)\(currentId)")
+                let rate = Rate(rate: rateDouble, time: Date(timeIntervalSince1970: TimeInterval(timeInteger)))
                 jpyList.append(rate)
             }
         }

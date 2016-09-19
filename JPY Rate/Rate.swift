@@ -10,12 +10,12 @@ import Foundation
 
 class Rate {
     var rate : Double = 0
-    var time : NSDate = NSDate()
+    var time : Date = Date()
     
     init() {
     }
     
-    init(rate: Double, time: NSDate) {
+    init(rate: Double, time: Date) {
         self.rate = rate
         self.time = time
     }
