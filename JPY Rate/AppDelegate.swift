@@ -20,6 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
         UIApplication.shared.registerUserNotificationSettings(settings)
         //UIApplication.shared.registerForRemoteNotifications(matching: [.alert, .badge, .sound])
+        
+        // reset badge number
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        
         return true
     }
 

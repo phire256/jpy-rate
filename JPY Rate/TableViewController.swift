@@ -14,6 +14,7 @@ class TableViewController: UITableViewController,UIPickerViewDataSource, UIPicke
     fileprivate let jpyData = JpyData()
     @IBOutlet weak var notificationText: UILabel!
     @IBOutlet weak var notificationTextOn: UILabel!
+    @IBOutlet weak var notificationTextPending: UILabel!
     fileprivate var notificationEnable = false
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,9 +68,11 @@ class TableViewController: UITableViewController,UIPickerViewDataSource, UIPicke
         if notificationEnable {
             notificationTextOn.isHidden = false
             notificationText.isHidden = true
+            notificationTextPending.isHidden = true
         } else {
             notificationTextOn.isHidden = true
             notificationText.isHidden = false
+            notificationTextPending.isHidden = true
         }
     }
     
@@ -136,7 +139,7 @@ class TableViewController: UITableViewController,UIPickerViewDataSource, UIPicke
     // MARK: - token post request
     fileprivate func sendTokenRequest(token:String, chooseAction:Int) {
         var responseString: String?
-        var request = URLRequest(url: URL(string: "http://2-dot-jpyapi-1172.appspot.com/token")!)
+        var request = URLRequest(url: URL(string: "\(ApiSite.site)token")!)
         request.httpMethod = "POST"
         let postString = "token=\(token)&info=\(chooseAction)"
         request.httpBody = postString.data(using: .utf8)

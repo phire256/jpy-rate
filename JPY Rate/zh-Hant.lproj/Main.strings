@@ -1,8 +1,10 @@
 
+/* Class = "UILabel"; text = "Notification: Pending"; ObjectID = "LLj-DH-GrV"; */
+"LLj-DH-GrV.text" = "通知:未更新";
+
+
 /* Class = "UILabel"; text = "Notification: ON"; ObjectID = "RjW-Lh-mAF"; */
 "RjW-Lh-mAF.text" = "通知:開啓";
-
-
 
 /* Class = "UILabel"; text = "Notification: OFF"; ObjectID = "ONv-UL-G8o"; */
 "ONv-UL-G8o.text" = "通知:關閉";

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0709018A1D901315007C6499 /* ApiSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070901891D901315007C6499 /* ApiSite.swift */; };
 		07D526001CA02EDD000B74DF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07D525FE1CA02EDD000B74DF /* InfoPlist.strings */; };
 		07D526041CA032F6000B74DF /* 180x180.png in Resources */ = {isa = PBXBuildFile; fileRef = 07D526031CA032F6000B74DF /* 180x180.png */; };
 		07D5B8F31A54CABD00EB6334 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D5B8F21A54CABD00EB6334 /* AppDelegate.swift */; };
@@ -32,9 +33,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		070901831D8CF837007C6499 /* JPY Rate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "JPY Rate.entitlements"; sourceTree = "<group>"; };
-		070901881D8DA258007C6499 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
-		0736E7B91D8C18A100CD2DE9 /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
+		070901891D901315007C6499 /* ApiSite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiSite.swift; sourceTree = "<group>"; };
+		0709018C1D9A4126007C6499 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		07D525FF1CA02EDD000B74DF /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		07D526031CA032F6000B74DF /* 180x180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 180x180.png; path = Images.xcassets/AppIcon.appiconset/180x180.png; sourceTree = "<group>"; };
 		07D5B8ED1A54CABD00EB6334 /* JPY Rate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JPY Rate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,7 +74,6 @@
 		07D5B8E41A54CABD00EB6334 = {
 			isa = PBXGroup;
 			children = (
-				0736E7B91D8C18A100CD2DE9 /* PushKit.framework */,
 				07D5B8EF1A54CABD00EB6334 /* JPY Rate */,
 				07D5B9081A54CABD00EB6334 /* JPY RateTests */,
 				07D5B8EE1A54CABD00EB6334 /* Products */,
@@ -93,7 +92,7 @@
 		07D5B8EF1A54CABD00EB6334 /* JPY Rate */ = {
 			isa = PBXGroup;
 			children = (
-				070901831D8CF837007C6499 /* JPY Rate.entitlements */,
+				070901891D901315007C6499 /* ApiSite.swift */,
 				07D5B8F21A54CABD00EB6334 /* AppDelegate.swift */,
 				07D5B9191A54D59A00EB6334 /* TableViewController.swift */,
 				07D5B91D1C6D882A00EB6334 /* JpyData.swift */,
@@ -181,7 +180,7 @@
 			attributes = {
 				LastSwiftMigration = 0720;
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Yong Min Chen";
 				TargetAttributes = {
 					07D5B8EC1A54CABD00EB6334 = {
@@ -193,7 +192,7 @@
 								enabled = 1;
 							};
 							com.apple.Push = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -251,6 +250,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0709018A1D901315007C6499 /* ApiSite.swift in Sources */,
 				07D5B8F81A54CABD00EB6334 /* ViewController.swift in Sources */,
 				07D5B8F31A54CABD00EB6334 /* AppDelegate.swift in Sources */,
 				07D5B8F61A54CABD00EB6334 /* JPY_Rate.xcdatamodeld in Sources */,
@@ -291,7 +291,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				07D5B8FA1A54CABD00EB6334 /* Base */,
-				070901881D8DA258007C6499 /* zh-Hant */,
+				0709018C1D9A4126007C6499 /* zh-Hant */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -311,6 +311,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -320,8 +321,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -344,7 +347,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -356,6 +359,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -365,8 +369,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -382,9 +388,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -393,7 +400,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "JPY Rate/JPY Rate.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -412,7 +418,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "JPY Rate/JPY Rate.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;

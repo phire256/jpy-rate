@@ -103,10 +103,24 @@ class JpyData: NSObject, NSURLConnectionDataDelegate{
     // MARK:- connection data delegate
     func connection(_ connection: NSURLConnection, didReceive data: Data) {
         self.data = (data as NSData).mutableCopy() as? NSMutableData
+        
+        // debug b
+        let tmpString = "{\"createTime\":1474945898, \"updateTime\":false, \"rates\":null}"
+        let tmpData = tmpString.data(using: .utf8)
+        self.data = NSMutableData(data: tmpData!)
+        // debug e
     }
     func connectionDidFinishLoading(_ connection: NSURLConnection) {
         var hasItem = false
         let jsonResult: NSDictionary = (try! JSONSerialization.jsonObject(with: self.data! as Data, options: JSONSerialization.ReadingOptions.mutableContainers)) as! NSDictionary
+        
+        // check error, there might be error when data api fails
+        if (jsonResult["updateTime"] as! NSInteger == 0) {
+            return
+        }
+        if (jsonResult["rates"] is NSNull) {
+            return
+        }
         
         // add item
         if !isDataAlreadyExists(jsonResult["updateTime"] as! NSInteger) {
@@ -130,7 +144,7 @@ class JpyData: NSObject, NSURLConnectionDataDelegate{
         // handler
         self.connectionHandler = handler
         // connection
-        let urlPath = "http://2-dot-jpyapi-1172.appspot.com/"
+        let urlPath = ApiSite.site
         let url = URL(string: urlPath)
         let request = URLRequest(url: url!)
         let connection = NSURLConnection(request: request, delegate: self)

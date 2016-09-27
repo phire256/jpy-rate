@@ -32,10 +32,19 @@
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification: OFF" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ONv-UL-G8o">
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification: OFF" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ONv-UL-G8o">
                                     <constraints>
                                         <constraint firstAttribute="width" constant="116" id="a4a-Lr-xR5"/>
                                         <constraint firstAttribute="height" constant="18" id="jOs-2c-f9d"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification: ON" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RjW-Lh-mAF" userLabel="Notification: ON">
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="18" id="LTB-RN-duF"/>
+                                        <constraint firstAttribute="width" constant="115.5" id="RjD-vy-Nm5"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <nil key="textColor"/>
@@ -51,10 +60,10 @@
                                         <action selector="onNotificationToggleClicked:" destination="uIG-35-4di" eventType="touchUpInside" id="kER-uz-AIr"/>
                                     </connections>
                                 </button>
-                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification: ON" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RjW-Lh-mAF" userLabel="Notification: ON">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification: Pending" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LLj-DH-GrV">
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="18" id="LTB-RN-duF"/>
-                                        <constraint firstAttribute="width" constant="115.5" id="RjD-vy-Nm5"/>
+                                        <constraint firstAttribute="width" constant="144" id="icC-sp-xOK"/>
+                                        <constraint firstAttribute="height" constant="18" id="sea-NH-M7T"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <nil key="textColor"/>
@@ -65,10 +74,12 @@
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="RjW-Lh-mAF" secondAttribute="trailing" constant="8" id="2In-pI-caj"/>
                                 <constraint firstItem="RjW-Lh-mAF" firstAttribute="top" secondItem="eC3-X9-jSJ" secondAttribute="top" constant="20" id="2tJ-Ch-4Ox"/>
+                                <constraint firstAttribute="trailing" secondItem="LLj-DH-GrV" secondAttribute="trailing" constant="8" id="37u-MQ-U27"/>
                                 <constraint firstItem="sSJ-DW-bnN" firstAttribute="top" secondItem="SJ5-o3-3GX" secondAttribute="bottom" constant="26" id="7H4-B4-JHo"/>
                                 <constraint firstAttribute="bottom" secondItem="e2g-K8-ns5" secondAttribute="bottom" constant="8" id="BYD-Hy-IWB"/>
                                 <constraint firstAttribute="centerX" secondItem="azR-MC-FZo" secondAttribute="centerX" id="CWh-TN-1Je"/>
                                 <constraint firstItem="e2g-K8-ns5" firstAttribute="centerX" secondItem="eC3-X9-jSJ" secondAttribute="centerX" constant="92.5" id="HDb-0W-gM1"/>
+                                <constraint firstItem="LLj-DH-GrV" firstAttribute="top" secondItem="eC3-X9-jSJ" secondAttribute="top" constant="20" id="I7c-ez-r3F"/>
                                 <constraint firstItem="ONv-UL-G8o" firstAttribute="top" secondItem="eC3-X9-jSJ" secondAttribute="top" constant="20" id="KoI-8u-Mi6"/>
                                 <constraint firstItem="azR-MC-FZo" firstAttribute="top" secondItem="eC3-X9-jSJ" secondAttribute="top" constant="68" id="bGV-eK-ksP"/>
                                 <constraint firstAttribute="trailing" secondItem="SJ5-o3-3GX" secondAttribute="trailing" id="fD5-Jh-wkp"/>
@@ -121,6 +132,7 @@
                     <connections>
                         <outlet property="notificationText" destination="ONv-UL-G8o" id="UQX-cp-SpX"/>
                         <outlet property="notificationTextOn" destination="RjW-Lh-mAF" id="WBk-xR-XQi"/>
+                        <outlet property="notificationTextPending" destination="LLj-DH-GrV" id="Tye-JF-Qpv"/>
                         <outlet property="pickerView" destination="SJ5-o3-3GX" id="2L7-Tq-N2M"/>
                         <outlet property="rootView" destination="eC3-X9-jSJ" id="anw-hy-HJ8"/>
                     </connections>
