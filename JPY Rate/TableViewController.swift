@@ -51,12 +51,36 @@ class TableViewController: UITableViewController,UIPickerViewDataSource, UIPicke
         jpyData.updateData(handler)
     }
     
-    fileprivate func updateNotificationData() {
+    fileprivate func loadNotifyByToken() -> Bool {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let deviceToken = appDelegate.deviceToken
         
         if deviceToken != nil {
             loadNotify(token: deviceToken!)
+        }
+        
+        return (deviceToken != nil)
+    }
+    
+    fileprivate func updateNotificationData() {
+        let tokenRefreshed = loadNotifyByToken()
+        
+        if !tokenRefreshed {
+            // append callback
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.receiveTokenHandler = self.didReceiveToken
+        }
+    }
+    
+    fileprivate func didReceiveToken(_ hasToken: Bool) {
+        if hasToken {
+            let tokenRefreshed = loadNotifyByToken()
+            
+            if tokenRefreshed {
+                // remove callback
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.receiveTokenHandler = nil
+            }
         }
     }
     

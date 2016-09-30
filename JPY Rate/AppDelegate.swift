@@ -8,18 +8,37 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
+    
+    var receiveTokenHandler : ((Bool) -> Void)? = nil
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-        UIApplication.shared.registerUserNotificationSettings(settings)
-        //UIApplication.shared.registerForRemoteNotifications(matching: [.alert, .badge, .sound])
+        
+        // support different version
+        if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: { granted, error in
+                if granted {
+                    //print("yes")
+                    UNUserNotificationCenter.current().delegate = self
+                    
+                    // register token
+                    application.registerForRemoteNotifications()
+                } else {
+                    //print("no")
+                }
+            })
+        } else {
+            let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            UIApplication.shared.registerUserNotificationSettings(settings)
+            //UIApplication.shared.registerForRemoteNotifications(matching: [.alert, .badge, .sound])
+        }
         
         // reset badge number
         UIApplication.shared.applicationIconBadgeNumber = 0
@@ -135,10 +154,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.deviceToken = pushToken
         //print("pushToken=\(pushToken)")
+        
+        if (self.receiveTokenHandler != nil) {
+            self.receiveTokenHandler!(true)
+        }
     }
     
     func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
+        
+        // register token
         application.registerForRemoteNotifications()
+    }
+    
+    // ios10 notifications
+    @available(iOS 10.0, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        //print("didReceive")
+    }
+    
+    @available(iOS 10.0, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        //print("willPresent")
     }
 }
 

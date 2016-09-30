@@ -8,7 +8,7 @@
 
 import Foundation
 
-class JpyData: NSObject, NSURLConnectionDataDelegate{
+class JpyData: NSObject, URLSessionDataDelegate {
     
     // MARK:- store keys
     fileprivate let frontKey = "front"
@@ -100,45 +100,49 @@ class JpyData: NSObject, NSURLConnectionDataDelegate{
         userDefault.set((rear + 1) % queueSize, forKey: rearKey)
     }
     
-    // MARK:- connection data delegate
-    func connection(_ connection: NSURLConnection, didReceive data: Data) {
+    // MARK: - session data delegate
+    func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
         self.data = (data as NSData).mutableCopy() as? NSMutableData
         
-        // debug b
-        let tmpString = "{\"createTime\":1474945898, \"updateTime\":false, \"rates\":null}"
-        let tmpData = tmpString.data(using: .utf8)
-        self.data = NSMutableData(data: tmpData!)
-        // debug e
-    }
-    func connectionDidFinishLoading(_ connection: NSURLConnection) {
-        var hasItem = false
-        let jsonResult: NSDictionary = (try! JSONSerialization.jsonObject(with: self.data! as Data, options: JSONSerialization.ReadingOptions.mutableContainers)) as! NSDictionary
-        
-        // check error, there might be error when data api fails
-        if (jsonResult["updateTime"] as! NSInteger == 0) {
-            return
-        }
-        if (jsonResult["rates"] is NSNull) {
-            return
-        }
-        
-        // add item
-        if !isDataAlreadyExists(jsonResult["updateTime"] as! NSInteger) {
-            addRate((jsonResult["rates"] as! NSString).doubleValue,
-                updateTime: jsonResult["updateTime"] as! NSInteger)
-            
-            // flag
-            hasItem = true
-        }
-        
-        // handler
-        if (self.connectionHandler != nil) {
-            self.connectionHandler!(hasItem)
-            // discard handler
-            self.connectionHandler = nil
-        }
+        //print("didReceiveData")
     }
     
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        if (error != nil) {
+            // fail
+            //print("completeFail")
+        } else {
+            //print("completeSuccess")
+            // success
+            var hasItem = false
+            let jsonResult: NSDictionary = (try! JSONSerialization.jsonObject(with: self.data! as Data, options: JSONSerialization.ReadingOptions.mutableContainers)) as! NSDictionary
+            
+            // check error
+            if (jsonResult["updateTime"] as! NSInteger == 0) {
+                return
+            }
+            if (jsonResult["rates"] is NSNull) {
+                return
+            }
+            
+            // add item
+            if !isDataAlreadyExists(jsonResult["updateTime"] as! NSInteger) {
+                addRate((jsonResult["rates"] as! NSString).doubleValue,
+                        updateTime: jsonResult["updateTime"] as! NSInteger)
+                
+                // flag
+                hasItem = true
+            }
+            
+            // handler
+            if (self.connectionHandler != nil) {
+                self.connectionHandler!(hasItem)
+                // discard handler
+                self.connectionHandler = nil
+            }
+        }
+    }
+
     // MARK:- public functions
     func updateData(_ handler: ((Bool) -> Void)?) {
         // handler
@@ -147,8 +151,12 @@ class JpyData: NSObject, NSURLConnectionDataDelegate{
         let urlPath = ApiSite.site
         let url = URL(string: urlPath)
         let request = URLRequest(url: url!)
-        let connection = NSURLConnection(request: request, delegate: self)
-        connection!.start()
+        let sessionConfiguration = URLSessionConfiguration.default
+        let session = URLSession(configuration: sessionConfiguration, delegate: self, delegateQueue: OperationQueue.main)
+        let task = session.dataTask(with: request)
+        task.resume()
+//        let connection = NSURLConnection(request: request, delegate: self)
+//        connection!.start()
     }
     func getShowSize() -> NSInteger {
         return tryGetShowSize()

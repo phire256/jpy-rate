@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0709018A1D901315007C6499 /* ApiSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070901891D901315007C6499 /* ApiSite.swift */; };
+		070901941D9B8F9E007C6499 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0709018E1D9B6827007C6499 /* UserNotifications.framework */; };
 		07D526001CA02EDD000B74DF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07D525FE1CA02EDD000B74DF /* InfoPlist.strings */; };
 		07D526041CA032F6000B74DF /* 180x180.png in Resources */ = {isa = PBXBuildFile; fileRef = 07D526031CA032F6000B74DF /* 180x180.png */; };
 		07D5B8F31A54CABD00EB6334 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D5B8F21A54CABD00EB6334 /* AppDelegate.swift */; };
@@ -35,6 +36,9 @@
 /* Begin PBXFileReference section */
 		070901891D901315007C6499 /* ApiSite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiSite.swift; sourceTree = "<group>"; };
 		0709018C1D9A4126007C6499 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
+		0709018E1D9B6827007C6499 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		070901901D9B6863007C6499 /* JPY Rate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "JPY Rate.entitlements"; sourceTree = "<group>"; };
+		070901921D9B6BB6007C6499 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		07D525FF1CA02EDD000B74DF /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		07D526031CA032F6000B74DF /* 180x180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 180x180.png; path = Images.xcassets/AppIcon.appiconset/180x180.png; sourceTree = "<group>"; };
 		07D5B8ED1A54CABD00EB6334 /* JPY Rate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JPY Rate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				070901941D9B8F9E007C6499 /* UserNotifications.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,12 +76,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0709018D1D9B6826007C6499 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				070901921D9B6BB6007C6499 /* NotificationCenter.framework */,
+				0709018E1D9B6827007C6499 /* UserNotifications.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		07D5B8E41A54CABD00EB6334 = {
 			isa = PBXGroup;
 			children = (
 				07D5B8EF1A54CABD00EB6334 /* JPY Rate */,
 				07D5B9081A54CABD00EB6334 /* JPY RateTests */,
 				07D5B8EE1A54CABD00EB6334 /* Products */,
+				0709018D1D9B6826007C6499 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,6 +107,7 @@
 		07D5B8EF1A54CABD00EB6334 /* JPY Rate */ = {
 			isa = PBXGroup;
 			children = (
+				070901901D9B6863007C6499 /* JPY Rate.entitlements */,
 				070901891D901315007C6499 /* ApiSite.swift */,
 				07D5B8F21A54CABD00EB6334 /* AppDelegate.swift */,
 				07D5B9191A54D59A00EB6334 /* TableViewController.swift */,
@@ -187,17 +203,19 @@
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = 8C9CFNE2Y3;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
 							com.apple.Push = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
 					07D5B9041A54CABD00EB6334 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 8C9CFNE2Y3;
 						LastSwiftMigration = 0800;
 						TestTargetID = 07D5B8EC1A54CABD00EB6334;
 					};
@@ -400,7 +418,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = "JPY Rate/JPY Rate.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Yong min Chen (8C9CFNE2Y3)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8C9CFNE2Y3;
@@ -409,6 +428,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.yongminchen.jpyrate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -418,6 +438,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "JPY Rate/JPY Rate.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -427,6 +448,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.yongminchen.jpyrate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -436,6 +458,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 8C9CFNE2Y3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -457,6 +480,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 8C9CFNE2Y3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
