@@ -19,15 +19,20 @@ class TableViewController: UITableViewController,UIPickerViewDataSource, UIPicke
     @IBOutlet weak var notificationToggle: UIButton!
     @IBOutlet weak var refreshButton: UIButton!
     fileprivate var notificationEnable = false
+    fileprivate var isTabBarHidden = true
     
     override func viewWillAppear(_ animated: Bool) {
         // debug: reset database
         //jpyData.resetDatabase()
+        
+        self.updateAllData()
     }
     
     override func viewDidLoad() {
         pickerView.dataSource = self
         pickerView.delegate = self
+        
+        refreshTabBar()
         
         updateAllData()
         
@@ -36,6 +41,13 @@ class TableViewController: UITableViewController,UIPickerViewDataSource, UIPicke
         DispatchQueue.main.asyncAfter(deadline: when) {
             self.updateAllData()
         }
+    }
+    fileprivate func refreshTabBar() {
+        self.tabBarController?.tabBar.isHidden = isTabBarHidden
+    }
+    @IBAction func onViewTapped(_ sender: UITapGestureRecognizer) {
+        isTabBarHidden = !isTabBarHidden
+        refreshTabBar()
     }
     
     fileprivate func refreshViewWhenNewItemComes(_ hasItem: Bool) {
@@ -96,6 +108,12 @@ class TableViewController: UITableViewController,UIPickerViewDataSource, UIPicke
     fileprivate func refreshNotifitionView() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let deviceToken = appDelegate.deviceToken
+        // 2017-02-16   phire : Force to hide notification toggle and refresh
+        let forceToHideRefresh = true
+        let forceToHideNotificationToggle = true
+        if forceToHideRefresh {
+            refreshButton.isHidden = true
+        }
         if deviceToken == nil {
             notificationTextOn.isHidden = true
             notificationText.isHidden = true
@@ -112,14 +130,18 @@ class TableViewController: UITableViewController,UIPickerViewDataSource, UIPicke
                 }
             }
         } else {
-            notificationToggle.isHidden = false
-            
-            // update refresh button position
-            for item in rootView.constraints {
-                if item.firstItem as! NSObject == refreshButton &&
-                    item.firstAttribute == .centerX {
-                    item.constant = -72
-                    break
+            if forceToHideNotificationToggle {
+                notificationToggle.isHidden = true
+            } else {
+                notificationToggle.isHidden = false
+                
+                // update refresh button position
+                for item in rootView.constraints {
+                    if item.firstItem as! NSObject == refreshButton &&
+                        item.firstAttribute == .centerX {
+                        item.constant = -72
+                        break
+                    }
                 }
             }
             

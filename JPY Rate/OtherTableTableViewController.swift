@@ -8,7 +8,35 @@
 
 import UIKit
 
-class OtherTableTableViewController: UITableViewController {
+class OtherTableTableViewController: UITableViewController, TokenTaskDelegate {
+    
+    let tokenTask = TokenTask()
+    var notificationStatus: NotificationStatus = .NoToken
+    
+    let optionStringList : [String] =
+        [
+            NSLocalizedString("Notification", comment: ""),
+            NSLocalizedString("History", comment: ""),
+        ]
+    
+    let aboutStringList : [String] =
+        [
+            "LICENSE"
+        ]
+    
+    enum sectionList : Int {
+        case Option = 0
+        case About = 1
+        
+        static var count: Int { return sectionList.About.rawValue + 1 }
+    }
+    
+    enum optionList : Int {
+        case Notification = 0
+        case History = 1
+        
+        static var count: Int { return optionList.History.rawValue + 1 }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,36 +47,107 @@ class OtherTableTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         self.tableView.delegate = self
+        
+        tokenTask.delegate = self
+        tokenTask.update()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    fileprivate func refreshView() {
+        self.tableView.reloadData()
+    }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+        return sectionList.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 1
+        if section == sectionList.Option.rawValue {
+            let count = optionCount()
+            return count
+        } else if section == sectionList.About.rawValue {
+            return 1
+        }
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        
+        // cell selection
+        var cellIdentifier = "Cell"
+        if indexPath.section == sectionList.Option.rawValue {
+            let index = optionIndex(indexPath.row)
+            if index == optionList.Notification.rawValue {
+                cellIdentifier = "OnOffCell"
+            }
+        }
+        
+        // init cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        if cellIdentifier == "OnOffCell" {
+            let onOffSwitch = UISwitch()
+            onOffSwitch.addTarget(self, action: #selector(onSwitchChanged), for: .touchUpInside)
+            if self.notificationStatus == .On {
+                onOffSwitch.isOn = true
+            } else {
+                onOffSwitch.isOn = false
+            }
+            cell.accessoryView = onOffSwitch
+        }
 
         // Configure the cell...
+        if indexPath.section == sectionList.Option.rawValue {
+            let index = optionIndex(indexPath.row)
+            cell.textLabel?.text = optionStringList[index]
+        } else if indexPath.section == sectionList.About.rawValue {
+            cell.textLabel?.text = aboutStringList[0]
+        }
 
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 {
-            performSegue(withIdentifier: "HistorySegue", sender: nil)
+        if indexPath.section == sectionList.Option.rawValue {
+            let index = optionIndex(indexPath.row)
+            if index == optionList.History.rawValue {
+                performSegue(withIdentifier: "HistorySegue", sender: nil)
+            } else {
+                // toggle notification
+                
+            }
+        } else if indexPath.section == sectionList.About.rawValue {
+            performSegue(withIdentifier: "LicenseSegue", sender: nil)
+        }
+    }
+    
+    // 
+    fileprivate func optionIndex(_ row: Int) -> Int {
+        var optionIndex = row
+        if self.notificationStatus == .NoToken {
+            optionIndex = optionIndex + 1
+        }
+        return optionIndex
+    }
+    
+    fileprivate func optionCount() -> Int {
+        if self.notificationStatus == .NoToken {
+            return optionList.count - 1
+        }
+        return optionList.count
+    }
+    
+    func onSwitchChanged(_ sender: UISwitch) {
+        //print(sender.isOn)
+        if sender.isOn {
+            tokenTask.enableNotification()
+        } else {
+            tokenTask.disableNotifcation()
         }
     }
 
@@ -99,4 +198,10 @@ class OtherTableTableViewController: UITableViewController {
         }
     }
 
+    // MARK: - TokenTaskDelegate
+    func onTokenTaskComplete(status: NotificationStatus) {
+        self.notificationStatus = status
+        
+        refreshView()
+    }
 }

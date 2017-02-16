@@ -29,4 +29,10 @@
 "sSJ-DW-bnN.normalTitle" = "重新整理";
 
 /* show histroy button */
-"b46-IQ-OAR.normalTitle" = "歷史走勢";
+"wba-5L-BMs.normalTitle" = "歷史走勢";
+
+/* Class = "UINavigationItem"; title = "Other"; ObjectID = "tx2-Wd-28U"; */
+"tx2-Wd-28U.title" = "選項";
+
+/* Class = "UINavigationItem"; title = "History"; ObjectID = "wba-5L-BMs"; */
+"wba-5L-BMs.title" = "歷史走勢";

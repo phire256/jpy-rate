@@ -1,0 +1,39 @@
+
+/* Class = "UINavigationItem"; title = "Notice"; ObjectID = "9z9-RC-hp5"; */
+"9z9-RC-hp5.title" = "Notice";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "A59-FA-qqO"; */
+"A59-FA-qqO.text" = "Title";
+
+/* Class = "UILabel"; text = "Notification: Not supported."; ObjectID = "D6m-Y5-2C1"; */
+"D6m-Y5-2C1.text" = "Notification: Not supported.";
+
+/* Class = "UILabel"; text = "Notification: Pending"; ObjectID = "LLj-DH-GrV"; */
+"LLj-DH-GrV.text" = "Notification: Pending";
+
+/* Class = "UILabel"; text = "Notification: OFF"; ObjectID = "ONv-UL-G8o"; */
+"ONv-UL-G8o.text" = "Notification: OFF";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "QuW-xW-f9t"; */
+"QuW-xW-f9t.text" = "Detail";
+
+/* Class = "UILabel"; text = "Notification: ON"; ObjectID = "RjW-Lh-mAF"; */
+"RjW-Lh-mAF.text" = "Notification: ON";
+
+/* Class = "UILabel"; text = "1 JPY = ? NTD"; ObjectID = "azR-MC-FZo"; */
+"azR-MC-FZo.text" = "1 JPY = ? NTD";
+
+/* Class = "UIButton"; normalTitle = "Notification Toggle"; ObjectID = "e2g-K8-ns5"; */
+"e2g-K8-ns5.normalTitle" = "Notification Toggle";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "mCu-VW-AQs"; */
+"mCu-VW-AQs.text" = "Title";
+
+/* Class = "UIButton"; normalTitle = "Refresh"; ObjectID = "sSJ-DW-bnN"; */
+"sSJ-DW-bnN.normalTitle" = "Refresh";
+
+/* Class = "UINavigationItem"; title = "Other"; ObjectID = "tx2-Wd-28U"; */
+"tx2-Wd-28U.title" = "Other";
+
+/* Class = "UINavigationItem"; title = "History"; ObjectID = "wba-5L-BMs"; */
+"wba-5L-BMs.title" = "History";

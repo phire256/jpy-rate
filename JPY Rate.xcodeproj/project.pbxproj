@@ -14,6 +14,10 @@
 		07C1BCB21E5054CA00FBBD01 /* ChartMarkerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07C1BCB11E5054CA00FBBD01 /* ChartMarkerView.xib */; };
 		07C1BCB41E533A2300FBBD01 /* HistoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C1BCB31E533A2300FBBD01 /* HistoryData.swift */; };
 		07C1BCB61E535BA500FBBD01 /* HistoryDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C1BCB51E535BA500FBBD01 /* HistoryDateFormatter.swift */; };
+		07C1BCBC1E557D5900FBBD01 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07C1BCBE1E557D5900FBBD01 /* Localizable.strings */; };
+		07C1BCC51E55877600FBBD01 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 07C1BCC41E55877600FBBD01 /* LICENSE */; };
+		07C1BCC71E558A1D00FBBD01 /* LicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C1BCC61E558A1D00FBBD01 /* LicenseViewController.swift */; };
+		07C1BCC91E558D5200FBBD01 /* TokenTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C1BCC81E558D5200FBBD01 /* TokenTask.swift */; };
 		07D526001CA02EDD000B74DF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07D525FE1CA02EDD000B74DF /* InfoPlist.strings */; };
 		07D526041CA032F6000B74DF /* 180x180.png in Resources */ = {isa = PBXBuildFile; fileRef = 07D526031CA032F6000B74DF /* 180x180.png */; };
 		07D5B8F31A54CABD00EB6334 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D5B8F21A54CABD00EB6334 /* AppDelegate.swift */; };
@@ -95,6 +99,11 @@
 		07C1BCB11E5054CA00FBBD01 /* ChartMarkerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChartMarkerView.xib; sourceTree = "<group>"; };
 		07C1BCB31E533A2300FBBD01 /* HistoryData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryData.swift; sourceTree = "<group>"; };
 		07C1BCB51E535BA500FBBD01 /* HistoryDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryDateFormatter.swift; sourceTree = "<group>"; };
+		07C1BCBD1E557D5900FBBD01 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		07C1BCC01E557F0400FBBD01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		07C1BCC41E55877600FBBD01 /* LICENSE */ = {isa = PBXFileReference; explicitFileType = text; fileEncoding = 4; path = LICENSE; sourceTree = "<group>"; };
+		07C1BCC61E558A1D00FBBD01 /* LicenseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicenseViewController.swift; sourceTree = "<group>"; };
+		07C1BCC81E558D5200FBBD01 /* TokenTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenTask.swift; sourceTree = "<group>"; };
 		07D525FF1CA02EDD000B74DF /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		07D526031CA032F6000B74DF /* 180x180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 180x180.png; path = Images.xcassets/AppIcon.appiconset/180x180.png; sourceTree = "<group>"; };
 		07D5B8ED1A54CABD00EB6334 /* JPY Rate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JPY Rate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -182,6 +191,7 @@
 				07D5B8F71A54CABD00EB6334 /* ViewController.swift */,
 				07FE8F531E4EEA8B00AA826F /* OtherTableTableViewController.swift */,
 				07FE8F511E4EE09B00AA826F /* HistoryViewController.swift */,
+				07C1BCC61E558A1D00FBBD01 /* LicenseViewController.swift */,
 				07D5B8F91A54CABD00EB6334 /* Main.storyboard */,
 				07D5B8FC1A54CABD00EB6334 /* Images.xcassets */,
 				07D5B8FE1A54CABD00EB6334 /* LaunchScreen.xib */,
@@ -191,6 +201,7 @@
 				07C1BCA71E5037D300FBBD01 /* JPY Rate-Bridging-Header.h */,
 				07C1BCAF1E50547400FBBD01 /* ChartMarkerView.swift */,
 				07C1BCB11E5054CA00FBBD01 /* ChartMarkerView.xib */,
+				07C1BCC81E558D5200FBBD01 /* TokenTask.swift */,
 			);
 			path = "JPY Rate";
 			sourceTree = "<group>";
@@ -198,8 +209,10 @@
 		07D5B8F01A54CABD00EB6334 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				07C1BCC41E55877600FBBD01 /* LICENSE */,
 				07D5B8F11A54CABD00EB6334 /* Info.plist */,
 				07D525FE1CA02EDD000B74DF /* InfoPlist.strings */,
+				07C1BCBE1E557D5900FBBD01 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -361,6 +374,8 @@
 			files = (
 				07D526001CA02EDD000B74DF /* InfoPlist.strings in Resources */,
 				07D526041CA032F6000B74DF /* 180x180.png in Resources */,
+				07C1BCC51E55877600FBBD01 /* LICENSE in Resources */,
+				07C1BCBC1E557D5900FBBD01 /* Localizable.strings in Resources */,
 				07D5B8FB1A54CABD00EB6334 /* Main.storyboard in Resources */,
 				07D5B9001A54CABD00EB6334 /* LaunchScreen.xib in Resources */,
 				07D5B8FD1A54CABD00EB6334 /* Images.xcassets in Resources */,
@@ -387,6 +402,7 @@
 				07FE8F541E4EEA8B00AA826F /* OtherTableTableViewController.swift in Sources */,
 				07D5B8F31A54CABD00EB6334 /* AppDelegate.swift in Sources */,
 				07C1BCAC1E5037D300FBBD01 /* DayAxisValueFormatter.m in Sources */,
+				07C1BCC91E558D5200FBBD01 /* TokenTask.swift in Sources */,
 				07D5B8F61A54CABD00EB6334 /* JPY_Rate.xcdatamodeld in Sources */,
 				07C1BCB61E535BA500FBBD01 /* HistoryDateFormatter.swift in Sources */,
 				07C1BCB01E50547400FBBD01 /* ChartMarkerView.swift in Sources */,
@@ -394,6 +410,7 @@
 				07C1BCB41E533A2300FBBD01 /* HistoryData.swift in Sources */,
 				07D5B91A1A54D59A00EB6334 /* TableViewController.swift in Sources */,
 				07D5B91E1C6D882A00EB6334 /* JpyData.swift in Sources */,
+				07C1BCC71E558A1D00FBBD01 /* LicenseViewController.swift in Sources */,
 				07FE8F521E4EE09B00AA826F /* HistoryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -422,6 +439,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		07C1BCBE1E557D5900FBBD01 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				07C1BCBD1E557D5900FBBD01 /* zh-Hant */,
+				07C1BCC01E557F0400FBBD01 /* Base */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		07D525FE1CA02EDD000B74DF /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
