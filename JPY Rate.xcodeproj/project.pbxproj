@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		0709018A1D901315007C6499 /* ApiSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070901891D901315007C6499 /* ApiSite.swift */; };
 		070901941D9B8F9E007C6499 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0709018E1D9B6827007C6499 /* UserNotifications.framework */; };
+		07C1BCAC1E5037D300FBBD01 /* DayAxisValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C1BCAB1E5037D300FBBD01 /* DayAxisValueFormatter.m */; };
+		07C1BCB01E50547400FBBD01 /* ChartMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C1BCAF1E50547400FBBD01 /* ChartMarkerView.swift */; };
+		07C1BCB21E5054CA00FBBD01 /* ChartMarkerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07C1BCB11E5054CA00FBBD01 /* ChartMarkerView.xib */; };
+		07C1BCB41E533A2300FBBD01 /* HistoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C1BCB31E533A2300FBBD01 /* HistoryData.swift */; };
+		07C1BCB61E535BA500FBBD01 /* HistoryDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C1BCB51E535BA500FBBD01 /* HistoryDateFormatter.swift */; };
 		07D526001CA02EDD000B74DF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07D525FE1CA02EDD000B74DF /* InfoPlist.strings */; };
 		07D526041CA032F6000B74DF /* 180x180.png in Resources */ = {isa = PBXBuildFile; fileRef = 07D526031CA032F6000B74DF /* 180x180.png */; };
 		07D5B8F31A54CABD00EB6334 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D5B8F21A54CABD00EB6334 /* AppDelegate.swift */; };
@@ -21,6 +26,10 @@
 		07D5B91A1A54D59A00EB6334 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D5B9191A54D59A00EB6334 /* TableViewController.swift */; };
 		07D5B91E1C6D882A00EB6334 /* JpyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D5B91D1C6D882A00EB6334 /* JpyData.swift */; };
 		07D5B9201C6ECC7100EB6334 /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D5B91F1C6ECC7100EB6334 /* Rate.swift */; };
+		07FE8F451E47791200AA826F /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07FE8F361E4776F600AA826F /* Charts.framework */; };
+		07FE8F461E47791200AA826F /* Charts.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 07FE8F361E4776F600AA826F /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		07FE8F521E4EE09B00AA826F /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FE8F511E4EE09B00AA826F /* HistoryViewController.swift */; };
+		07FE8F541E4EEA8B00AA826F /* OtherTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FE8F531E4EEA8B00AA826F /* OtherTableTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,14 +40,61 @@
 			remoteGlobalIDString = 07D5B8EC1A54CABD00EB6334;
 			remoteInfo = "JPY Rate";
 		};
+		07FE8F351E4776F600AA826F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 07FE8F2F1E4776F500AA826F /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06165F241D8110E600722320;
+			remoteInfo = Charts;
+		};
+		07FE8F371E4776F600AA826F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 07FE8F2F1E4776F500AA826F /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06B120D51D811E6200D14B02;
+			remoteInfo = ChartsRealm;
+		};
+		07FE8F391E4776F600AA826F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 07FE8F2F1E4776F500AA826F /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06165F2E1D8110E600722320;
+			remoteInfo = ChartsTests;
+		};
+		07FE8F471E47791200AA826F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 07FE8F2F1E4776F500AA826F /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 06165F231D8110E600722320;
+			remoteInfo = Charts;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		07FE8F141E476F6800AA826F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				07FE8F461E47791200AA826F /* Charts.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		070901891D901315007C6499 /* ApiSite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiSite.swift; sourceTree = "<group>"; };
-		0709018C1D9A4126007C6499 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		0709018E1D9B6827007C6499 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		070901901D9B6863007C6499 /* JPY Rate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "JPY Rate.entitlements"; sourceTree = "<group>"; };
 		070901921D9B6BB6007C6499 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		07C1BCA71E5037D300FBBD01 /* JPY Rate-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JPY Rate-Bridging-Header.h"; sourceTree = "<group>"; };
+		07C1BCAA1E5037D300FBBD01 /* DayAxisValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayAxisValueFormatter.h; sourceTree = "<group>"; };
+		07C1BCAB1E5037D300FBBD01 /* DayAxisValueFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayAxisValueFormatter.m; sourceTree = "<group>"; };
+		07C1BCAF1E50547400FBBD01 /* ChartMarkerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartMarkerView.swift; sourceTree = "<group>"; };
+		07C1BCB11E5054CA00FBBD01 /* ChartMarkerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChartMarkerView.xib; sourceTree = "<group>"; };
+		07C1BCB31E533A2300FBBD01 /* HistoryData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryData.swift; sourceTree = "<group>"; };
+		07C1BCB51E535BA500FBBD01 /* HistoryDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryDateFormatter.swift; sourceTree = "<group>"; };
 		07D525FF1CA02EDD000B74DF /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		07D526031CA032F6000B74DF /* 180x180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 180x180.png; path = Images.xcassets/AppIcon.appiconset/180x180.png; sourceTree = "<group>"; };
 		07D5B8ED1A54CABD00EB6334 /* JPY Rate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JPY Rate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,6 +111,10 @@
 		07D5B9191A54D59A00EB6334 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		07D5B91D1C6D882A00EB6334 /* JpyData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JpyData.swift; sourceTree = "<group>"; };
 		07D5B91F1C6ECC7100EB6334 /* Rate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
+		07DCC5D21DA9468100192890 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
+		07FE8F2F1E4776F500AA826F /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
+		07FE8F511E4EE09B00AA826F /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		07FE8F531E4EEA8B00AA826F /* OtherTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherTableTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +123,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				070901941D9B8F9E007C6499 /* UserNotifications.framework in Frameworks */,
+				07FE8F451E47791200AA826F /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +149,7 @@
 		07D5B8E41A54CABD00EB6334 = {
 			isa = PBXGroup;
 			children = (
+				07FE8F2F1E4776F500AA826F /* Charts.xcodeproj */,
 				07D5B8EF1A54CABD00EB6334 /* JPY Rate */,
 				07D5B9081A54CABD00EB6334 /* JPY RateTests */,
 				07D5B8EE1A54CABD00EB6334 /* Products */,
@@ -107,19 +169,28 @@
 		07D5B8EF1A54CABD00EB6334 /* JPY Rate */ = {
 			isa = PBXGroup;
 			children = (
+				07C1BCAA1E5037D300FBBD01 /* DayAxisValueFormatter.h */,
+				07C1BCB51E535BA500FBBD01 /* HistoryDateFormatter.swift */,
+				07C1BCAB1E5037D300FBBD01 /* DayAxisValueFormatter.m */,
 				070901901D9B6863007C6499 /* JPY Rate.entitlements */,
 				070901891D901315007C6499 /* ApiSite.swift */,
 				07D5B8F21A54CABD00EB6334 /* AppDelegate.swift */,
 				07D5B9191A54D59A00EB6334 /* TableViewController.swift */,
 				07D5B91D1C6D882A00EB6334 /* JpyData.swift */,
+				07C1BCB31E533A2300FBBD01 /* HistoryData.swift */,
 				07D5B91F1C6ECC7100EB6334 /* Rate.swift */,
 				07D5B8F71A54CABD00EB6334 /* ViewController.swift */,
+				07FE8F531E4EEA8B00AA826F /* OtherTableTableViewController.swift */,
+				07FE8F511E4EE09B00AA826F /* HistoryViewController.swift */,
 				07D5B8F91A54CABD00EB6334 /* Main.storyboard */,
 				07D5B8FC1A54CABD00EB6334 /* Images.xcassets */,
 				07D5B8FE1A54CABD00EB6334 /* LaunchScreen.xib */,
 				07D5B8F41A54CABD00EB6334 /* JPY_Rate.xcdatamodeld */,
 				07D526031CA032F6000B74DF /* 180x180.png */,
 				07D5B8F01A54CABD00EB6334 /* Supporting Files */,
+				07C1BCA71E5037D300FBBD01 /* JPY Rate-Bridging-Header.h */,
+				07C1BCAF1E50547400FBBD01 /* ChartMarkerView.swift */,
+				07C1BCB11E5054CA00FBBD01 /* ChartMarkerView.xib */,
 			);
 			path = "JPY Rate";
 			sourceTree = "<group>";
@@ -150,6 +221,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		07FE8F301E4776F500AA826F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				07FE8F361E4776F600AA826F /* Charts.framework */,
+				07FE8F381E4776F600AA826F /* ChartsRealm.framework */,
+				07FE8F3A1E4776F600AA826F /* ChartsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -160,10 +241,12 @@
 				07D5B8E91A54CABD00EB6334 /* Sources */,
 				07D5B8EA1A54CABD00EB6334 /* Frameworks */,
 				07D5B8EB1A54CABD00EB6334 /* Resources */,
+				07FE8F141E476F6800AA826F /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				07FE8F481E47791200AA826F /* PBXTargetDependency */,
 			);
 			name = "JPY Rate";
 			productName = "JPY Rate";
@@ -202,7 +285,7 @@
 					07D5B8EC1A54CABD00EB6334 = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = 8C9CFNE2Y3;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -233,6 +316,12 @@
 			mainGroup = 07D5B8E41A54CABD00EB6334;
 			productRefGroup = 07D5B8EE1A54CABD00EB6334 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 07FE8F301E4776F500AA826F /* Products */;
+					ProjectRef = 07FE8F2F1E4776F500AA826F /* Charts.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				07D5B8EC1A54CABD00EB6334 /* JPY Rate */,
@@ -240,6 +329,30 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		07FE8F361E4776F600AA826F /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 07FE8F351E4776F600AA826F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		07FE8F381E4776F600AA826F /* ChartsRealm.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ChartsRealm.framework;
+			remoteRef = 07FE8F371E4776F600AA826F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		07FE8F3A1E4776F600AA826F /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = 07FE8F391E4776F600AA826F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		07D5B8EB1A54CABD00EB6334 /* Resources */ = {
@@ -251,6 +364,7 @@
 				07D5B8FB1A54CABD00EB6334 /* Main.storyboard in Resources */,
 				07D5B9001A54CABD00EB6334 /* LaunchScreen.xib in Resources */,
 				07D5B8FD1A54CABD00EB6334 /* Images.xcassets in Resources */,
+				07C1BCB21E5054CA00FBBD01 /* ChartMarkerView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,11 +384,17 @@
 			files = (
 				0709018A1D901315007C6499 /* ApiSite.swift in Sources */,
 				07D5B8F81A54CABD00EB6334 /* ViewController.swift in Sources */,
+				07FE8F541E4EEA8B00AA826F /* OtherTableTableViewController.swift in Sources */,
 				07D5B8F31A54CABD00EB6334 /* AppDelegate.swift in Sources */,
+				07C1BCAC1E5037D300FBBD01 /* DayAxisValueFormatter.m in Sources */,
 				07D5B8F61A54CABD00EB6334 /* JPY_Rate.xcdatamodeld in Sources */,
+				07C1BCB61E535BA500FBBD01 /* HistoryDateFormatter.swift in Sources */,
+				07C1BCB01E50547400FBBD01 /* ChartMarkerView.swift in Sources */,
 				07D5B9201C6ECC7100EB6334 /* Rate.swift in Sources */,
+				07C1BCB41E533A2300FBBD01 /* HistoryData.swift in Sources */,
 				07D5B91A1A54D59A00EB6334 /* TableViewController.swift in Sources */,
 				07D5B91E1C6D882A00EB6334 /* JpyData.swift in Sources */,
+				07FE8F521E4EE09B00AA826F /* HistoryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +414,11 @@
 			target = 07D5B8EC1A54CABD00EB6334 /* JPY Rate */;
 			targetProxy = 07D5B9061A54CABD00EB6334 /* PBXContainerItemProxy */;
 		};
+		07FE8F481E47791200AA826F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Charts;
+			targetProxy = 07FE8F471E47791200AA826F /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -309,7 +434,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				07D5B8FA1A54CABD00EB6334 /* Base */,
-				0709018C1D9A4126007C6499 /* zh-Hant */,
+				07DCC5D21DA9468100192890 /* zh-Hant */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -417,11 +542,14 @@
 		07D5B9101A54CABD00EB6334 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "JPY Rate/JPY Rate.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Yong min Chen (8C9CFNE2Y3)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 8C9CFNE2Y3;
 				INFOPLIST_FILE = "JPY Rate/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -429,6 +557,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "JPY Rate/JPY Rate-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -437,11 +567,14 @@
 		07D5B9111A54CABD00EB6334 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "JPY Rate/JPY Rate.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 8C9CFNE2Y3;
 				INFOPLIST_FILE = "JPY Rate/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -449,6 +582,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "JPY Rate/JPY Rate-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

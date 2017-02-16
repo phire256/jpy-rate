@@ -15,6 +15,9 @@ class TableViewController: UITableViewController,UIPickerViewDataSource, UIPicke
     @IBOutlet weak var notificationText: UILabel!
     @IBOutlet weak var notificationTextOn: UILabel!
     @IBOutlet weak var notificationTextPending: UILabel!
+    @IBOutlet weak var notificationTextNotSupported: UILabel!
+    @IBOutlet weak var notificationToggle: UIButton!
+    @IBOutlet weak var refreshButton: UIButton!
     fileprivate var notificationEnable = false
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,6 +60,8 @@ class TableViewController: UITableViewController,UIPickerViewDataSource, UIPicke
         
         if deviceToken != nil {
             loadNotify(token: deviceToken!)
+        } else {
+            refreshNotifitionView()
         }
         
         return (deviceToken != nil)
@@ -89,14 +94,46 @@ class TableViewController: UITableViewController,UIPickerViewDataSource, UIPicke
     }
     
     fileprivate func refreshNotifitionView() {
-        if notificationEnable {
-            notificationTextOn.isHidden = false
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let deviceToken = appDelegate.deviceToken
+        if deviceToken == nil {
+            notificationTextOn.isHidden = true
             notificationText.isHidden = true
             notificationTextPending.isHidden = true
+            notificationTextNotSupported.isHidden = false
+            notificationToggle.isHidden = true
+            
+            // update refresh button position
+            for item in rootView.constraints {
+                if item.firstItem as! NSObject == refreshButton &&
+                    item.firstAttribute == .centerX {
+                    item.constant = 0
+                    break
+                }
+            }
         } else {
-            notificationTextOn.isHidden = true
-            notificationText.isHidden = false
-            notificationTextPending.isHidden = true
+            notificationToggle.isHidden = false
+            
+            // update refresh button position
+            for item in rootView.constraints {
+                if item.firstItem as! NSObject == refreshButton &&
+                    item.firstAttribute == .centerX {
+                    item.constant = -72
+                    break
+                }
+            }
+            
+            if notificationEnable {
+                notificationTextOn.isHidden = false
+                notificationText.isHidden = true
+                notificationTextPending.isHidden = true
+                notificationTextNotSupported.isHidden = true
+            } else {
+                notificationTextOn.isHidden = true
+                notificationText.isHidden = false
+                notificationTextPending.isHidden = true
+                notificationTextNotSupported.isHidden = true
+            }
         }
     }
     
@@ -119,6 +156,9 @@ class TableViewController: UITableViewController,UIPickerViewDataSource, UIPicke
                 //notificationEnable = true
             }
         }
+    }
+    @IBAction func onShowHistoryClicked(_ sender: UIButton) {
+        // show history view
     }
     
     // MARK: - Table View callbacks
@@ -194,6 +234,7 @@ class TableViewController: UITableViewController,UIPickerViewDataSource, UIPicke
                     self.refreshNotifitionView()
                 }
             } else if chooseAction == 1 || chooseAction == 2 {
+                // update data to refresh view
                 self.loadNotify(token: token)
             }
         }

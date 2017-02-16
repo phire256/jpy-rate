@@ -10,4 +10,5 @@ import Foundation
 
 class ApiSite {
     static let site = "http://jpyapi-1172.appspot.com/"
+    static let historysite = "http://4-dot-jpyapi-1172.appspot.com/history"
 }

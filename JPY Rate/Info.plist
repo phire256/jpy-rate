@@ -19,14 +19,14 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>3</string>
+	<string>4</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>2-dot-jpyapi-1172.appspot.com</key>
+			<key>4-dot-jpyapi-1172.appspot.com</key>
 			<dict>
 				<key>NSIncludesSubdomains</key>
 				<true/>

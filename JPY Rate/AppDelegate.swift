@@ -28,8 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                     //print("yes")
                     UNUserNotificationCenter.current().delegate = self
                     
-                    // register token
-                    application.registerForRemoteNotifications()
                 } else {
                     //print("no")
                 }
@@ -39,6 +37,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             UIApplication.shared.registerUserNotificationSettings(settings)
             //UIApplication.shared.registerForRemoteNotifications(matching: [.alert, .badge, .sound])
         }
+        
+        // register token
+        UIApplication.shared.registerForRemoteNotifications()
         
         // reset badge number
         UIApplication.shared.applicationIconBadgeNumber = 0
@@ -146,6 +147,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     // MARK: - push notification
     var deviceToken: String? = nil
     
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        print(userInfo)
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        print("hello")
+    }
+    
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         var pushToken: String = ""
         for i in 0..<deviceToken.count {
@@ -160,6 +169,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
     }
     
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print(error)
+    }
+    
     func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
         
         // register token
@@ -169,12 +182,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     // ios10 notifications
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        //print("didReceive")
+        print("didReceive")
     }
     
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        //print("willPresent")
+        print("willPresent")
     }
 }
 

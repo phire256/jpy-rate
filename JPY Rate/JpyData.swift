@@ -74,7 +74,7 @@ class JpyData: NSObject, URLSessionDataDelegate {
                 rear = rear + queueSize
             }
             for currentId in front ..< rear {
-                let timeInteger = userDefault.integer(forKey: "\(timeKey)\(currentId)") as NSInteger
+                let timeInteger = userDefault.integer(forKey: "\(timeKey)\(currentId % queueSize)") as NSInteger
                 if time == timeInteger {
                     return true
                 }

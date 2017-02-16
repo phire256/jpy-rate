@@ -1,4 +1,8 @@
 
+/* Class = "UILabel"; text = "Notification: Not supported."; ObjectID = "D6m-Y5-2C1"; */
+"D6m-Y5-2C1.text" = "通知:未支援";
+
+
 /* Class = "UILabel"; text = "Notification: Pending"; ObjectID = "LLj-DH-GrV"; */
 "LLj-DH-GrV.text" = "通知:未更新";
 
@@ -23,3 +27,6 @@
 
 /* Class = "UIButton"; normalTitle = "Refresh"; ObjectID = "sSJ-DW-bnN"; */
 "sSJ-DW-bnN.normalTitle" = "重新整理";
+
+/* show histroy button */
+"b46-IQ-OAR.normalTitle" = "歷史走勢";
