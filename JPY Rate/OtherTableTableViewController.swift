@@ -21,7 +21,8 @@ class OtherTableTableViewController: UITableViewController, TokenTaskDelegate {
     
     let aboutStringList : [String] =
         [
-            "LICENSE"
+            "LICENSE",
+            "\(NSLocalizedString("Version", comment: "")) \(Bundle.main.infoDictionary!["CFBundleShortVersionString"]!)",
         ]
     
     enum sectionList : Int {
@@ -36,6 +37,13 @@ class OtherTableTableViewController: UITableViewController, TokenTaskDelegate {
         case History = 1
         
         static var count: Int { return optionList.History.rawValue + 1 }
+    }
+    
+    enum aboutList: Int {
+        case License = 0
+        case Version = 1
+        
+        static var count: Int { return aboutList.Version.rawValue + 1 }
     }
 
     override func viewDidLoad() {
@@ -72,7 +80,7 @@ class OtherTableTableViewController: UITableViewController, TokenTaskDelegate {
             let count = optionCount()
             return count
         } else if section == sectionList.About.rawValue {
-            return 1
+            return aboutList.count
         }
         return 0
     }
@@ -85,6 +93,10 @@ class OtherTableTableViewController: UITableViewController, TokenTaskDelegate {
             let index = optionIndex(indexPath.row)
             if index == optionList.Notification.rawValue {
                 cellIdentifier = "OnOffCell"
+            }
+        } else if indexPath.section == sectionList.About.rawValue {
+            if indexPath.row == aboutList.Version.rawValue {
+                cellIdentifier = "LabelCell"
             }
         }
         
@@ -106,10 +118,14 @@ class OtherTableTableViewController: UITableViewController, TokenTaskDelegate {
             let index = optionIndex(indexPath.row)
             cell.textLabel?.text = optionStringList[index]
         } else if indexPath.section == sectionList.About.rawValue {
-            cell.textLabel?.text = aboutStringList[0]
+            cell.textLabel?.text = aboutStringList[indexPath.row]
         }
 
         return cell
+    }
+    
+    fileprivate func removeSelection(_ tableView: UITableView, at indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -118,11 +134,14 @@ class OtherTableTableViewController: UITableViewController, TokenTaskDelegate {
             if index == optionList.History.rawValue {
                 performSegue(withIdentifier: "HistorySegue", sender: nil)
             } else {
-                // toggle notification
-                
+                removeSelection(tableView, at: indexPath)
             }
         } else if indexPath.section == sectionList.About.rawValue {
-            performSegue(withIdentifier: "LicenseSegue", sender: nil)
+            if indexPath.row == aboutList.License.rawValue {
+                performSegue(withIdentifier: "LicenseSegue", sender: nil)
+            } else {
+                removeSelection(tableView, at: indexPath)
+            }
         }
     }
     
